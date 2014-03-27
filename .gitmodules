@@ -79,3 +79,6 @@
 [submodule "cisst"]
 	path = cisst
 	url = https://github.com/jhu-cisst/cisst.git
+[submodule "sawIntuitiveResearchKit"]
+	path = sawIntuitiveResearchKit
+	url = https://github.com/jhu-dvrk/sawIntuitiveResearchKit.git
