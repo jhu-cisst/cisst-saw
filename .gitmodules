@@ -1,0 +1,6 @@
+[submodule "sawTextToSpeech"]
+	path = sawTextToSpeech
+	url = https://github.com/jhu-saw/sawTextToSpeech.git
+[submodule "sawRobotIO1394"]
+	path = sawRobotIO1394
+	url = https://github.com/jhu-saw/sawRobotIO1394.git
