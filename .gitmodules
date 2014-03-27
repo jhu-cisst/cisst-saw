@@ -4,3 +4,75 @@
 [submodule "sawRobotIO1394"]
 	path = sawRobotIO1394
 	url = https://github.com/jhu-saw/sawRobotIO1394.git
+[submodule "saw3Dconnexion"]
+	path = saw3Dconnexion
+	url = https://github.com/jhu-saw/saw3Dconnexion.git
+[submodule "sawBarrett"]
+	path = sawBarrett
+	url = https://github.com/jhu-saw/sawBarrett.git
+[submodule "sawCANBus"]
+	path = sawCANBus
+	url = https://github.com/jhu-saw/sawCANBus.git
+[submodule "sawCMUSphinx4"]
+	path = sawCMUSphinx4
+	url = https://github.com/jhu-saw/sawCMUSphinx4.git
+[submodule "sawClaronMicronTracker"]
+	path = sawClaronMicronTracker
+	url = https://github.com/jhu-saw/sawClaronMicronTracker.git
+[submodule "sawControllers"]
+	path = sawControllers
+	url = https://github.com/jhu-saw/sawControllers.git
+[submodule "sawDataPlayer"]
+	path = sawDataPlayer
+	url = https://github.com/jhu-saw/sawDataPlayer.git
+[submodule "sawGLUTSimulator"]
+	path = sawGLUTSimulator
+	url = https://github.com/jhu-saw/sawGLUTSimulator
+[submodule "sawIntuitiveDaVinci"]
+	path = sawIntuitiveDaVinci
+	url = https://github.com/jhu-saw/sawIntuitiveDaVinci.git
+[submodule "sawJR3ForceSensor"]
+	path = sawJR3ForceSensor
+	url = https://github.com/jhu-saw/sawJR3ForceSensor.git
+[submodule "sawKeyboard"]
+	path = sawKeyboard
+	url = https://github.com/jhu-saw/sawKeyboard.git
+[submodule "sawLoPoMoCo"]
+	path = sawLoPoMoCo
+	url = https://github.com/jhu-saw/sawLoPoMoCo.git
+[submodule "sawMedtronicStealthlink"]
+	path = sawMedtronicStealthlink
+	url = https://github.com/jhu-saw/sawMedtronicStealthlink.git
+[submodule "sawMicroScribeDigitizer"]
+	path = sawMicroScribeDigitizer
+	url = https://github.com/jhu-saw/sawMicroScribeDigitizer.git
+[submodule "sawNDITracker"]
+	path = sawNDITracker
+	url = https://github.com/jhu-saw/sawNDITracker.git
+[submodule "sawNovintFalcon"]
+	path = sawNovintFalcon
+	url = https://github.com/jhu-saw/sawNovintFalcon.git
+[submodule "sawOpenAL"]
+	path = sawOpenAL
+	url = https://github.com/jhu-saw/sawOpenAL.git
+[submodule "sawOpenDynamicsEngine"]
+	path = sawOpenDynamicsEngine
+	url = https://github.com/jhu-saw/sawOpenDynamicsEngine.git
+[submodule "sawOpenIGTLink"]
+	path = sawOpenIGTLink
+	url = https://github.com/jhu-saw/sawOpenIGTLink.git
+[submodule "sawOpenNI"]
+	path = sawOpenNI
+	url = https://github.com/jhu-saw/sawOpenNI.git
+[submodule "sawOpenSceneGraph"]
+	path = sawOpenSceneGraph
+	url = https://github.com/jhu-saw/sawOpenSceneGraph.git
+[submodule "sawSartoriusScale"]
+	path = sawSartoriusScale
+	url = https://github.com/jhu-saw/sawSartoriusScale.git
+[submodule "sawSensablePhantom"]
+	path = sawSensablePhantom
+	url = https://github.com/jhu-saw/sawSensablePhantom.git
+[submodule "sawTrajectories"]
+	path = sawTrajectories
+	url = https://github.com/jhu-saw/sawTrajectories.git
