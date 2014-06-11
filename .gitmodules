@@ -82,3 +82,6 @@
 [submodule "sawIntuitiveResearchKit"]
 	path = sawIntuitiveResearchKit
 	url = https://github.com/jhu-dvrk/sawIntuitiveResearchKit.git
+[submodule "sawConstraintController"]
+	path = sawConstraintController
+	url = https://github.com/jhu-saw/sawConstraintController.git
