@@ -30,6 +30,7 @@ cisst_use_cisst_output_directories ()
 
 # saw components to be compiled, order matters
 cisst_offer_saw_component (sawKeyboard ON)
+cisst_offer_saw_component (sawTextToSpeech ON)
 cisst_offer_saw_component (saw3Dconnexion OFF)
 cisst_offer_saw_component (sawCANBus OFF)
 cisst_offer_saw_component (sawControllers OFF)
@@ -60,8 +61,8 @@ cisst_offer_saw_component (sawOpenNI OFF)
 cisst_offer_saw_component (sawOpenSceneGraph OFF)
 cisst_offer_saw_component (sawSartoriusScale OFF)
 cisst_offer_saw_component (sawSensablePhantom OFF)
-cisst_offer_saw_component (sawTextToSpeech OFF)
 cisst_offer_saw_component (sawRobotIO1394 OFF)
+cisst_offer_saw_component (sawATIForceSensor OFF)
 
 if (UNIX)
   cisst_offer_saw_component (sawIntuitiveResearchKit OFF)

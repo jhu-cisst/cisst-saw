@@ -85,3 +85,6 @@
 [submodule "sawConstraintController"]
 	path = sawConstraintController
 	url = https://github.com/jhu-saw/sawConstraintController.git
+[submodule "sawATIForceSensor"]
+	path = sawATIForceSensor
+	url = https://github.com/jhu-saw/sawATIForceSensor.git
