@@ -118,3 +118,6 @@
 	path = sawATIForceSensor
 	url = https://github.com/jhu-saw/sawATIForceSensor.git
         branch = devel
+[submodule "cisstNetlib"]
+	path = cisstNetlib
+	url = https://github.com/jhu-cisst/cisstNetlib
