@@ -120,4 +120,13 @@
         branch = devel
 [submodule "cisstNetlib"]
 	path = cisstNetlib
-	url = https://github.com/jhu-cisst/cisstNetlib
+	url = https://github.com/jhu-cisst/cisstNetlib.git
+        branch = master
+[submodule "cisst-ros"]
+	path = cisst-ros
+	url = https://github.com/jhu-cisst/cisst-ros.git
+        branch = devel
+[submodule "dvrk-ros"]
+	path = dvrk-ros
+	url = https://github.com/jhu-dvrk/dvrk-ros.git
+        branch = devel
