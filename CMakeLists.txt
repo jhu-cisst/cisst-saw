@@ -63,7 +63,9 @@ cisst_offer_saw_component (sawSartoriusScale OFF)
 cisst_offer_saw_component (sawSensablePhantom OFF)
 cisst_offer_saw_component (sawRobotIO1394 OFF)
 cisst_offer_saw_component (sawATIForceSensor OFF)
+cisst_offer_saw_component (sawAtracsysFusionTrack OFF)
 
 if (UNIX)
   cisst_offer_saw_component (sawIntuitiveResearchKit OFF)
 endif (UNIX)
+

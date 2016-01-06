@@ -118,6 +118,10 @@
 	path = sawATIForceSensor
 	url = https://github.com/jhu-saw/sawATIForceSensor.git
         branch = devel
+[submodule "sawAtracsysFusionTrack"]
+	path = sawAtracsysFusionTrack
+	url = https://github.com/jhu-saw/sawAtracsysFusionTrack.git
+        branch = devel
 [submodule "cisstNetlib"]
 	path = cisstNetlib
 	url = https://github.com/jhu-cisst/cisstNetlib.git
@@ -125,8 +129,4 @@
 [submodule "cisst-ros"]
 	path = cisst-ros
 	url = https://github.com/jhu-cisst/cisst-ros.git
-        branch = devel
-[submodule "dvrk-ros"]
-	path = dvrk-ros
-	url = https://github.com/jhu-dvrk/dvrk-ros.git
         branch = devel
