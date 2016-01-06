@@ -88,6 +88,9 @@
 [submodule "sawATIForceSensor"]
 	path = sawATIForceSensor
 	url = https://github.com/jhu-saw/sawATIForceSensor.git
+[submodule "sawAtracsysFusionTrack"]
+	path = sawAtracsysFusionTrack
+	url = https://github.com/jhu-saw/sawAtracsysFusionTrack.git
 [submodule "cisstNetlib"]
 	path = cisstNetlib
 	url = https://github.com/jhu-cisst/cisstNetlib
