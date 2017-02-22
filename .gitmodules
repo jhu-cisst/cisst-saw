@@ -134,3 +134,6 @@
 	path = sawOptoforceSensor
 	url = https://github.com/jhu-saw/sawOptoforceSensor.git
         branch = devel
+[submodule "sawUniversalRobot"]
+	path = sawUniversalRobot
+	url = https://github.com/jhu-saw/sawUniversalRobot.git
