@@ -138,3 +138,6 @@
 	path = sawUniversalRobot
 	url = https://github.com/jhu-saw/sawUniversalRobot.git
         branch = devel
+[submodule "sawForceDimensionSDK"]
+	path = sawForceDimensionSDK
+	url = https://github.com/jhu-saw/sawForceDimensionSDK
