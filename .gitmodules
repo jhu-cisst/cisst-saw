@@ -100,3 +100,9 @@
 [submodule "sawOptoforceSensor"]
 	path = sawOptoforceSensor
 	url = https://github.com/jhu-saw/sawOptoforceSensor
+[submodule "sawForceDimensionSDK"]
+	path = sawForceDimensionSDK
+	url = https://github.com/jhu-saw/sawForceDimensionSDK
+[submodule "sawUniversalRobot"]
+	path = sawUniversalRobot
+	url = https://github.com/jhu-saw/sawUniversalRobot
