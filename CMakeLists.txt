@@ -16,16 +16,6 @@ cmake_minimum_required (VERSION 2.8)
 
 project (cisst-saw)
 
-option (BUILD_cisstNetlib "Build cisstNetlib.  You will need to compile a first time AND THEN turn on CISST_HAS_CISSTNETLIB so CMake can find all the cisstNetlib libraries.  To note, on Linux we recommend to install gfortran first" OFF)
-if (BUILD_cisstNetlib)
-  add_subdirectory (cisstNetlib)
-  # for cisst to find this build version of cisstNetlib
-  set (FORCE_CISSTNETLIB_CONFIG ON)
-  set (CMAKE_PREFIX_PATH "${CMAKE_CURRENT_BINARY_DIR}/cisstNetlib" ${CMAKE_PREFIX_PATH})
-else ()
-  set (FORCE_CISSTNETLIB_CONFIG OFF)
-endif ()
-
 # include cisst 
 set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
