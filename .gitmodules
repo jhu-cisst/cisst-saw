@@ -141,3 +141,6 @@
 [submodule "sawForceDimensionSDK"]
 	path = sawForceDimensionSDK
 	url = https://github.com/jhu-saw/sawForceDimensionSDK
+[submodule "sawSocketStreamer"]
+	path = sawSocketStreamer
+	url = https://github.com/jhu-saw/sawSocketStreamer
