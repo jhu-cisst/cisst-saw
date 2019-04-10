@@ -106,3 +106,6 @@
 [submodule "sawUniversalRobot"]
 	path = sawUniversalRobot
 	url = https://github.com/jhu-saw/sawUniversalRobot
+[submodule "sawSocketStreamer"]
+	path = sawSocketStreamer
+	url = https://github.com/jhu-saw/sawSocketStreamer
