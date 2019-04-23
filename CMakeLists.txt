@@ -29,6 +29,7 @@ cisst_use_cisst_output_directories ()
 # saw components to be compiled, order matters
 cisst_offer_saw_component (sawKeyboard ON)
 cisst_offer_saw_component (sawTextToSpeech ON)
+cisst_offer_saw_component (sawSocketStreamer ON)
 cisst_offer_saw_component (saw3Dconnexion OFF)
 cisst_offer_saw_component (sawCANBus OFF)
 cisst_offer_saw_component (sawControllers OFF)
