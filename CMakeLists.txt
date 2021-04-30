@@ -2,7 +2,7 @@
 # Author(s):  Anton Deguet
 # Created on: 2014-03-14
 #
-# (C) Copyright 2014-2017 Johns Hopkins University (JHU), All Rights Reserved.
+# (C) Copyright 2014-2021 Johns Hopkins University (JHU), All Rights Reserved.
 #
 # --- begin cisst license - do not edit ---
 #
@@ -16,7 +16,7 @@ cmake_minimum_required (VERSION 2.8)
 
 project (cisst-saw)
 
-# include cisst 
+# include cisst
 set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
 
@@ -48,11 +48,9 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "QNX")
 endif ("${CMAKE_SYSTEM_NAME}" STREQUAL "QNX")
 cisst_offer_saw_component (sawJR3ForceSensor OFF)
 
-cisst_offer_saw_component (sawLoPoMoCo OFF)
 cisst_offer_saw_component (sawMedtronicStealthlink OFF)
 cisst_offer_saw_component (sawMicroScribeDigitizer OFF)
 cisst_offer_saw_component (sawNDITracker OFF)
-cisst_offer_saw_component (sawNovintFalcon OFF)
 cisst_offer_saw_component (sawOpenAL OFF)
 cisst_offer_saw_component (sawOpenDynamicsEngine OFF)
 cisst_offer_saw_component (sawOpenIGTLink OFF)
@@ -66,4 +64,3 @@ cisst_offer_saw_component (sawAtracsysFusionTrack OFF)
 cisst_offer_saw_component (sawOptoforceSensor OFF)
 cisst_offer_saw_component (sawUniversalRobot OFF)
 cisst_offer_saw_component (sawIntuitiveResearchKit OFF)
-
