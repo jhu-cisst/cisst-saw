@@ -37,9 +37,6 @@
 [submodule "sawKeyboard"]
 	path = sawKeyboard
 	url = https://github.com/jhu-saw/sawKeyboard.git
-[submodule "sawLoPoMoCo"]
-	path = sawLoPoMoCo
-	url = https://github.com/jhu-saw/sawLoPoMoCo.git
 [submodule "sawMedtronicStealthlink"]
 	path = sawMedtronicStealthlink
 	url = https://github.com/jhu-saw/sawMedtronicStealthlink.git
