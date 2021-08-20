@@ -1,30 +1,27 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-REPOSITORY="cisstNetlib cisst sawKeyboard sawTextToSpeech"
+
+# order matters!
+REPOSITORIES="cisstNetlib cisst sawKeyboard sawTextToSpeech sawControllers sawRobotIO1394"
 
 # create build directory
 BUILD_DIR=$SCRIPT_DIR/../build
 mkdir -p $BUILD_DIR
 BUILD_DIR="$( cd $BUILD_DIR && pwd )"
 
-PKG_DIR=$BUILD_DIR/packages
+PKG_DIR=$BUILD_DIR"/packages/$(lsb_release -si)-$(lsb_release -sr)"
 mkdir -p $PKG_DIR
 rm -f $PKG_DIR/*.deb
 
 echo "Packages will be copied to $PKG_DIR"
 
-# # remove installed versions of packages
-# for package in $REPOSITORY; do
-#     echo "Removing installed package for $package"
-#     sudo apt remove $package
-# done
-
 # CMake options for all projects
-CMAKE_OPTS="-DCMAKE_BUILD_TYPE=Release" #  -DCMAKE_MODULE_LINKER_FLAGS=\"-s\""
+# Release mode and strip binaries
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS=\"-s\" -DCMAKE_CXX_FLAGS=\"-s\""
 
 # generate packages
-for repo in $REPOSITORY;do
+for repo in $REPOSITORIES;do
   echo "Building package for $repo"
   PKG_BUILD_DIR=$BUILD_DIR/$repo
   mkdir -p $PKG_BUILD_DIR
@@ -58,8 +55,6 @@ for repo in $REPOSITORY;do
     echo "Found generated package $pkg"
     mv $pkg $PKG_DIR
   done
-
-  # install the package so future packages can used the apt installed version
 
 done
 
