@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # order matters!
-REPOSITORIES="cisstNetlib cisst sawKeyboard sawTextToSpeech sawControllers sawRobotIO1394"
+REPOSITORIES="cisstNetlib cisst sawKeyboard sawTextToSpeech sawControllers sawRobotIO1394 sawIntuitiveResearchKit"
 
 # create build directory
 BUILD_DIR=$SCRIPT_DIR/../build
@@ -38,13 +38,16 @@ for repo in $REPOSITORIES;do
   # make install so shared libraries can be found during make package
   cd $PKG_BUILD_DIR && sudo make install
   cd $PKG_BUILD_DIR && sudo chmod 666 install_manifest*.txt
+  # save install manifest, make package will overwrite them
+  mkdir -p $PKG_BUILD_DIR/manifests-copy
+  mv $PKG_BUILD_DIR/install_manifest*.txt $PKG_BUILD_DIR/manifests-copy
 
   # remove all existing old packages and then make for this repo
   cd $PKG_BUILD_DIR && rm -f *.deb
   cd $PKG_BUILD_DIR && make package
 
   # remove the "manually" installed package
-  sudo xargs rm -fv < $PKG_BUILD_DIR/install_manifest*.txt
+  sudo xargs rm -fv < $PKG_BUILD_DIR/manifests-copy/install_manifest*.txt
 
   # install all the packages generated
   sudo dpkg --install $PKG_BUILD_DIR/*.deb
