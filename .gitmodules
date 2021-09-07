@@ -50,10 +50,6 @@
 	path = sawKeyboard
 	url = https://github.com/jhu-saw/sawKeyboard.git
         branch = devel
-[submodule "sawLoPoMoCo"]
-	path = sawLoPoMoCo
-	url = https://github.com/jhu-saw/sawLoPoMoCo.git
-        branch = devel
 [submodule "sawMedtronicStealthlink"]
 	path = sawMedtronicStealthlink
 	url = https://github.com/jhu-saw/sawMedtronicStealthlink.git
