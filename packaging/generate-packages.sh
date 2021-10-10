@@ -2,8 +2,8 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-# order matters!
-REPOSITORIES="cisstNetlib cisst sawKeyboard sawTextToSpeech sawControllers sawRobotIO1394 sawIntuitiveResearchKit"
+# order must reflect dependencies between packages!
+REPOSITORIES="cisstNetlib cisst sawKeyboard sawTextToSpeech sawControllers sawRobotIO1394 sawIntuitiveResearchKit sawNDITracker"
 
 # create build directory
 BUILD_DIR=$SCRIPT_DIR/../build
@@ -25,6 +25,11 @@ for repo in $REPOSITORIES;do
   echo "Building package for $repo"
   PKG_BUILD_DIR=$BUILD_DIR/$repo
   mkdir -p $PKG_BUILD_DIR
+
+  # remove existing install manifests
+  cd $PKG_BUILD_DIR && sudo rm -f install_manifest*.txt
+
+  # configure CMake with existing cache if any
   CMAKE_CONFIG=$SCRIPT_DIR/$repo-cpack-debian.cmake
   if [ -f "$CMAKE_CONFIG" ]; then
     cd $PKG_BUILD_DIR && cmake $CMAKE_OPTS -C $CMAKE_CONFIG $SCRIPT_DIR/../$repo
@@ -47,7 +52,11 @@ for repo in $REPOSITORIES;do
   cd $PKG_BUILD_DIR && make package
 
   # remove the "manually" installed package
-  sudo xargs rm -fv < $PKG_BUILD_DIR/manifests-copy/install_manifest*.txt
+  MANIFESTS="$(ls $PKG_BUILD_DIR/manifests-copy/install_manifest*.txt)"
+  for mnfst in $MANIFESTS; do
+    echo "Removing temporary installed files using $mnfst"
+    sudo xargs rm -fv < $mnfst
+  done
 
   # install all the packages generated
   sudo dpkg --install $PKG_BUILD_DIR/*.deb
