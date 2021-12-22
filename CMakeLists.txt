@@ -12,7 +12,7 @@
 #
 # --- end cisst license ---
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.0)
 
 project (cisst-saw)
 
@@ -21,7 +21,7 @@ set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
 
 # use cisst settings for compilers
-include (cisst/cisstSettings.cmake)
+include (cisst/cmake/cisstSettings.cmake)
 
 # place generated binaries along cisst binaries
 cisst_use_cisst_output_directories ()
