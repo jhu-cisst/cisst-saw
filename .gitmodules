@@ -137,6 +137,8 @@
 [submodule "sawForceDimensionSDK"]
 	path = sawForceDimensionSDK
 	url = https://github.com/jhu-saw/sawForceDimensionSDK
+	branch = devel
 [submodule "sawSocketStreamer"]
 	path = sawSocketStreamer
 	url = https://github.com/jhu-saw/sawSocketStreamer
+	branch = devel
