@@ -2,7 +2,7 @@
 # Author(s):  Anton Deguet
 # Created on: 2014-03-14
 #
-# (C) Copyright 2014-2021 Johns Hopkins University (JHU), All Rights Reserved.
+# (C) Copyright 2014-2023 Johns Hopkins University (JHU), All Rights Reserved.
 #
 # --- begin cisst license - do not edit ---
 #
@@ -21,7 +21,7 @@ set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
 
 # use cisst settings for compilers
-include (cisst/cisstSettings.cmake)
+include (cisst/cmake/cisstSettings.cmake)
 
 # place generated binaries along cisst binaries
 cisst_use_cisst_output_directories ()
