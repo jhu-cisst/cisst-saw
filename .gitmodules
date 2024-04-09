@@ -136,9 +136,13 @@
         branch = devel
 [submodule "sawForceDimensionSDK"]
 	path = sawForceDimensionSDK
-	url = https://github.com/jhu-saw/sawForceDimensionSDK
+	url = https://github.com/jhu-saw/sawForceDimensionSDK.git
 	branch = devel
 [submodule "sawSocketStreamer"]
 	path = sawSocketStreamer
-	url = https://github.com/jhu-saw/sawSocketStreamer
+	url = https://github.com/jhu-saw/sawSocketStreamer.git
+	branch = devel
+[submodule "sawGalilController"]
+	path = sawGalilController
+	url = https://github.com/jhu-saw/sawGalilController.git
 	branch = devel
