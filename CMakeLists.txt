@@ -2,7 +2,7 @@
 # Author(s):  Anton Deguet
 # Created on: 2014-03-14
 #
-# (C) Copyright 2014-2021 Johns Hopkins University (JHU), All Rights Reserved.
+# (C) Copyright 2014-2024 Johns Hopkins University (JHU), All Rights Reserved.
 #
 # --- begin cisst license - do not edit ---
 #
@@ -63,4 +63,5 @@ cisst_offer_saw_component (sawATIForceSensor OFF)
 cisst_offer_saw_component (sawAtracsysFusionTrack OFF)
 cisst_offer_saw_component (sawOptoforceSensor OFF)
 cisst_offer_saw_component (sawUniversalRobot OFF)
+cisst_offer_saw_component (sawGalilController OFF)
 cisst_offer_saw_component (sawIntuitiveResearchKit OFF)
