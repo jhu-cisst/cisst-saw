@@ -146,3 +146,7 @@
 	path = sawGalilController
 	url = https://github.com/jhu-saw/sawGalilController.git
 	branch = devel
+[submodule "sawCopleyController"]
+	path = sawCopleyController
+	url = https://github.com/jhu-saw/sawCopleyController.git
+	branch = devel
