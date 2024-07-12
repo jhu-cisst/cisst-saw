@@ -1,9 +1,11 @@
 [submodule "sawTextToSpeech"]
 	path = sawTextToSpeech
 	url = https://github.com/jhu-saw/sawTextToSpeech.git
+	branch = main
 [submodule "sawRobotIO1394"]
 	path = sawRobotIO1394
 	url = https://github.com/jhu-saw/sawRobotIO1394.git
+	branch = main
 [submodule "saw3Dconnexion"]
 	path = saw3Dconnexion
 	url = https://github.com/jhu-saw/saw3Dconnexion.git
@@ -22,6 +24,7 @@
 [submodule "sawControllers"]
 	path = sawControllers
 	url = https://github.com/jhu-saw/sawControllers.git
+	branch = main
 [submodule "sawDataPlayer"]
 	path = sawDataPlayer
 	url = https://github.com/jhu-saw/sawDataPlayer.git
@@ -37,6 +40,7 @@
 [submodule "sawKeyboard"]
 	path = sawKeyboard
 	url = https://github.com/jhu-saw/sawKeyboard.git
+	branch = main
 [submodule "sawMedtronicStealthlink"]
 	path = sawMedtronicStealthlink
 	url = https://github.com/jhu-saw/sawMedtronicStealthlink.git
@@ -46,6 +50,7 @@
 [submodule "sawNDITracker"]
 	path = sawNDITracker
 	url = https://github.com/jhu-saw/sawNDITracker.git
+	branch = main
 [submodule "sawNovintFalcon"]
 	path = sawNovintFalcon
 	url = https://github.com/jhu-saw/sawNovintFalcon.git
@@ -58,6 +63,7 @@
 [submodule "sawOpenIGTLink"]
 	path = sawOpenIGTLink
 	url = https://github.com/jhu-saw/sawOpenIGTLink.git
+	branch = main
 [submodule "sawOpenNI"]
 	path = sawOpenNI
 	url = https://github.com/jhu-saw/sawOpenNI.git
@@ -67,42 +73,62 @@
 [submodule "sawSartoriusScale"]
 	path = sawSartoriusScale
 	url = https://github.com/jhu-saw/sawSartoriusScale.git
+	branch = main
 [submodule "sawSensablePhantom"]
 	path = sawSensablePhantom
 	url = https://github.com/jhu-saw/sawSensablePhantom.git
+	branch = main
 [submodule "sawTrajectories"]
 	path = sawTrajectories
 	url = https://github.com/jhu-saw/sawTrajectories.git
 [submodule "cisst"]
 	path = cisst
 	url = https://github.com/jhu-cisst/cisst.git
+	branch = main
 [submodule "sawIntuitiveResearchKit"]
 	path = sawIntuitiveResearchKit
 	url = https://github.com/jhu-dvrk/sawIntuitiveResearchKit.git
+	branch = main
 [submodule "sawConstraintController"]
 	path = sawConstraintController
 	url = https://github.com/jhu-saw/sawConstraintController.git
 [submodule "sawATIForceSensor"]
 	path = sawATIForceSensor
 	url = https://github.com/jhu-saw/sawATIForceSensor.git
+	branch = main
 [submodule "sawAtracsysFusionTrack"]
 	path = sawAtracsysFusionTrack
 	url = https://github.com/jhu-saw/sawAtracsysFusionTrack.git
+	branch = main
 [submodule "cisstNetlib"]
 	path = cisstNetlib
 	url = https://github.com/jhu-cisst/cisstNetlib
+	branch = main
 [submodule "cisst-ros"]
 	path = cisst-ros
 	url = https://github.com/jhu-cisst/cisst-ros
+	branch = main
 [submodule "sawOptoforceSensor"]
 	path = sawOptoforceSensor
 	url = https://github.com/jhu-saw/sawOptoforceSensor
+	branch = main
 [submodule "sawForceDimensionSDK"]
 	path = sawForceDimensionSDK
 	url = https://github.com/jhu-saw/sawForceDimensionSDK
+	branch = main
 [submodule "sawUniversalRobot"]
 	path = sawUniversalRobot
 	url = https://github.com/jhu-saw/sawUniversalRobot
+	branch = main
 [submodule "sawSocketStreamer"]
 	path = sawSocketStreamer
 	url = https://github.com/jhu-saw/sawSocketStreamer
+	branch = main
+[submodule "sawCopleyController"]
+	path = sawCopleyController
+	url = https://github.com/jhu-saw/sawCopleyController
+	branch = main
+[submodule "sawGalilController"]
+	path = sawGalilController
+	url = https://github.com/jhu-saw/sawGalilController
+	branch = main
