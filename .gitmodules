@@ -51,9 +51,6 @@
 	path = sawNDITracker
 	url = https://github.com/jhu-saw/sawNDITracker.git
 	branch = main
-[submodule "sawNovintFalcon"]
-	path = sawNovintFalcon
-	url = https://github.com/jhu-saw/sawNovintFalcon.git
 [submodule "sawOpenAL"]
 	path = sawOpenAL
 	url = https://github.com/jhu-saw/sawOpenAL.git
