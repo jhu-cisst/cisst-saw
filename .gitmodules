@@ -146,3 +146,7 @@
 	path = sawCopleyController
 	url = https://github.com/jhu-saw/sawCopleyController.git
 	branch = devel
+[submodule "sawMaxonEPOS"]
+	path = sawMaxonEPOS
+	url = https://github.com/jhu-saw/sawMaxonEPOS.git
+	branch = devel
