@@ -2,7 +2,7 @@
 # Author(s):  Anton Deguet
 # Created on: 2014-03-14
 #
-# (C) Copyright 2014-2024 Johns Hopkins University (JHU), All Rights Reserved.
+# (C) Copyright 2014-2026 Johns Hopkins University (JHU), All Rights Reserved.
 #
 # --- begin cisst license - do not edit ---
 #
@@ -12,7 +12,7 @@
 #
 # --- end cisst license ---
 
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.16)
 
 project (cisst-saw)
 
