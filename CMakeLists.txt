@@ -20,12 +20,6 @@ project (cisst-saw)
 set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
 
-# use cisst settings for compilers
-include (cisst/cmake/cisstSettings.cmake)
-
-# place generated binaries along cisst binaries
-cisst_use_cisst_output_directories ()
-
 # saw components to be compiled, order matters
 cisst_offer_saw_component (sawKeyboard ON)
 cisst_offer_saw_component (sawTextToSpeech ON)
