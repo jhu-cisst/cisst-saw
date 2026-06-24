@@ -19,6 +19,7 @@ project (cisst-saw)
 # include cisst
 set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
 add_subdirectory (cisst)
+cisst_use_cisst_output_directories ()
 
 # saw components to be compiled, order matters
 cisst_offer_saw_component (sawKeyboard ON)
