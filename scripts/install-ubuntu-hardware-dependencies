@@ -1,0 +1,188 @@
+#!/usr/bin/env bash
+#
+# Install the Ubuntu dependencies used to build and test the optional hardware
+# components in cisst-saw.  This script intentionally installs vendor SDKs in
+# their supported locations; it does not download device firmware or change
+# CMake configuration.
+#
+# Run with: sudo ./scripts/install-ubuntu-hardware-dependencies
+#
+set -euo pipefail
+
+readonly GALIL_RELEASE_URL="https://www.galil.com/sw/pub/apt/all/galil-release_1_all.deb"
+readonly FORCE_DIMENSION_VERSION="3.17.7"
+readonly FORCE_DIMENSION_URL="https://downloads.forcedimension.com/sdk/sdk-${FORCE_DIMENSION_VERSION}-linux-x86_64-gcc.tar.gz"
+readonly FORCE_DIMENSION_INSTALL_DIR="/opt/forcedimension/sdk-${FORCE_DIMENSION_VERSION}"
+readonly MAXON_EPOS_URL="https://www.maxongroup.com/medias/sys_master/root/9443687202846/EPOS-Linux-Library-En.zip"
+readonly RULES_FILE="/etc/udev/rules.d/80-cisst-saw-hardware.rules"
+
+if [[ "${EUID}" -ne 0 ]]; then
+    echo "Error: run this script with sudo." >&2
+    exit 1
+fi
+
+if [[ ! -r /etc/os-release ]]; then
+    echo "Error: unable to identify the operating system." >&2
+    exit 1
+fi
+
+# shellcheck disable=SC1091
+. /etc/os-release
+if [[ "${ID}" != "ubuntu" ]]; then
+    echo "Error: this script supports Ubuntu only (detected: ${ID})." >&2
+    exit 1
+fi
+
+if [[ "$(uname -m)" != "x86_64" ]]; then
+    echo "Error: this script currently supports Ubuntu x86_64 only." >&2
+    exit 1
+fi
+
+target_user="${SUDO_USER:-}"
+if [[ -z "${target_user}" || "${target_user}" == "root" ]]; then
+    echo "Error: run this from the intended desktop account using sudo." >&2
+    exit 1
+fi
+
+if ! id "${target_user}" >/dev/null 2>&1; then
+    echo "Error: user '${target_user}' does not exist." >&2
+    exit 1
+fi
+
+temp_dir="$(mktemp -d)"
+cleanup() {
+    rm -rf "${temp_dir}"
+}
+trap cleanup EXIT
+
+package_installed() {
+    dpkg-query --show --showformat='${db:Status-Status}' "$1" 2>/dev/null | grep -qx installed
+}
+
+force_dimension_installed=false
+if [[ -f "${FORCE_DIMENSION_INSTALL_DIR}/include/dhdc.h" ]]; then
+    force_dimension_installed=true
+elif [[ -e "${FORCE_DIMENSION_INSTALL_DIR}" ]]; then
+    echo "Error: ${FORCE_DIMENSION_INSTALL_DIR} exists but is not a complete Force Dimension SDK installation." >&2
+    exit 1
+fi
+
+epos_installed=false
+if [[ -f /opt/EposCmdLib_6.8.1.0/include/Definitions.h || -f /opt/EposCmdLib/include/Definitions.h ]]; then
+    epos_installed=true
+fi
+
+galil_installed=true
+for package in gclib gcapsd; do
+    if ! package_installed "${package}"; then
+        galil_installed=false
+    fi
+done
+
+required_packages=(ca-certificates libudev-dev libusb-1.0-0-dev libwebsocketpp-dev pkg-config)
+if [[ "${force_dimension_installed}" == false || "${epos_installed}" == false || "${galil_installed}" == false ]]; then
+    required_packages+=(curl unzip)
+fi
+missing_packages=()
+for package in "${required_packages[@]}"; do
+    if ! package_installed "${package}"; then
+        missing_packages+=("${package}")
+    fi
+done
+if [[ "${#missing_packages[@]}" -gt 0 ]]; then
+    echo "Installing Ubuntu development dependencies: ${missing_packages[*]}"
+    apt-get update
+    apt-get install -y --no-install-recommends "${missing_packages[@]}"
+else
+    echo "Ubuntu development dependencies are already installed"
+fi
+
+echo "Installing Force Dimension SDK ${FORCE_DIMENSION_VERSION}"
+if [[ "${force_dimension_installed}" == false ]]; then
+    curl --fail --location --show-error --silent \
+        --output "${temp_dir}/force-dimension-sdk.tar.gz" \
+        "${FORCE_DIMENSION_URL}"
+    mkdir "${temp_dir}/force-dimension"
+    tar -xzf "${temp_dir}/force-dimension-sdk.tar.gz" -C "${temp_dir}/force-dimension"
+    mapfile -t force_dimension_headers < <(find "${temp_dir}/force-dimension" -type f -path '*/include/dhdc.h' -print)
+    if [[ "${#force_dimension_headers[@]}" -ne 1 ]]; then
+        echo "Error: expected exactly one Force Dimension dhdc.h, found ${#force_dimension_headers[@]}." >&2
+        exit 1
+    fi
+    force_dimension_source_dir="$(dirname "$(dirname "${force_dimension_headers[0]}")")"
+    install -d "$(dirname "${FORCE_DIMENSION_INSTALL_DIR}")"
+    mv "${force_dimension_source_dir}" "${FORCE_DIMENSION_INSTALL_DIR}"
+fi
+if [[ -e /opt/forcedimension/sdk && ! -L /opt/forcedimension/sdk ]]; then
+    echo "Error: /opt/forcedimension/sdk exists and is not a symlink; refusing to replace it." >&2
+    exit 1
+fi
+ln -sfn "$(basename "${FORCE_DIMENSION_INSTALL_DIR}")" /opt/forcedimension/sdk
+
+if [[ "${galil_installed}" == false ]]; then
+    echo "Installing Galil gclib and gcapsd"
+    curl --fail --location --show-error --silent \
+        --output "${temp_dir}/galil-release.deb" \
+        "${GALIL_RELEASE_URL}"
+    apt-get install -y "${temp_dir}/galil-release.deb"
+    apt-get update
+    apt-get install -y gclib gcapsd
+else
+    echo "Galil gclib and gcapsd are already installed"
+fi
+
+if [[ "${epos_installed}" == false ]]; then
+    echo "Installing Maxon EPOS Command Library"
+    curl --fail --location --show-error --silent \
+        --output "${temp_dir}/EPOS-Linux-Library-En.zip" \
+        "${MAXON_EPOS_URL}"
+    unzip -q "${temp_dir}/EPOS-Linux-Library-En.zip" -d "${temp_dir}/epos"
+    mapfile -t epos_installers < <(find "${temp_dir}/epos" -type f -name install.sh -print)
+    if [[ "${#epos_installers[@]}" -ne 1 ]]; then
+        echo "Error: expected exactly one Maxon install.sh, found ${#epos_installers[@]}." >&2
+        exit 1
+    fi
+    (
+        cd "$(dirname "${epos_installers[0]}")"
+        bash "${epos_installers[0]}"
+    )
+else
+    echo "Maxon EPOS Command Library is already installed"
+fi
+
+echo "Installing USB access rules"
+install -m 0644 /dev/stdin "${RULES_FILE}" <<'RULES'
+# Force Dimension haptic devices (Force Dimension USB vendor ID).
+SUBSYSTEM=="usb", ATTR{idVendor}=="1451", GROUP="dialout", MODE="0660"
+# Novint Falcon supported by the Force Dimension SDK.
+SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="cb48", GROUP="dialout", MODE="0660"
+RULES
+
+# The Maxon archive provides the authoritative EPOS4 HID rule.  Install it if
+# present; older EPOS devices use the serial/USB group assignment below.
+mapfile -t epos_rules < <(find "${temp_dir}/epos" -type f -name 99-epos4.rules -print)
+if [[ "${#epos_rules[@]}" -eq 1 ]]; then
+    install -m 0644 "${epos_rules[0]}" /etc/udev/rules.d/99-epos4.rules
+elif [[ ! -f /etc/udev/rules.d/99-epos4.rules ]]; then
+    echo "Warning: Maxon 99-epos4.rules was not found; EPOS4 HID access may require vendor-specific setup." >&2
+fi
+
+# Copley controllers and direct serial/USB Galil connections use Ubuntu's
+# standard dialout group.  The Force Dimension rules above use the same group.
+usermod -aG dialout "${target_user}"
+
+udevadm control --reload-rules
+udevadm trigger --subsystem-match=usb --action=add
+
+cat <<EOF
+
+Hardware dependencies installed for ${target_user}.
+
+Log out and back in (or reboot) before using serial/USB devices so the new
+dialout group membership is applied.  Replug connected USB devices after the
+udev reload if their permissions do not update immediately.
+
+Force Dimension SDK ${FORCE_DIMENSION_VERSION} is installed at
+${FORCE_DIMENSION_INSTALL_DIR}.  Configure cisst-saw with:
+  -Dforce_dimension_sdk_DIR=${FORCE_DIMENSION_INSTALL_DIR}
+EOF

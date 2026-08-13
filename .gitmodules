@@ -94,3 +94,7 @@
 	path = sawMaxonEPOS
 	url = https://github.com/jhu-saw/sawMaxonEPOS.git
 	branch = devel
+[submodule "sawHaplyService"]
+	path = sawHaplyService
+	url = https://github.com/jhu-saw/sawHaplyService.git
+	branch = devel
