@@ -18,6 +18,7 @@ project (cisst-saw)
 
 # include cisst
 set (cisst_DIR "${CMAKE_CURRENT_BINARY_DIR}/cisst")
+set (CISST_LIBRARY_INSTALL_SUFFIX "lib")
 add_subdirectory (cisst)
 cisst_use_cisst_output_directories ()
 
